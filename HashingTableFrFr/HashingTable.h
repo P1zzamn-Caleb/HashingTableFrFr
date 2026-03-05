@@ -2,8 +2,17 @@
 #define _HASHING_TABLE_H
 
 // constructor
-HashTable();
-// insert 
+#include "LL.h"
+
+const MAP_SIZE = 7;
+
+class HashingTable
+{
+	int keys[MAP_SIZE];
+	LL data[MAP_SIZE];
+public:
+	HashingTable();
+  // insert 
 void Insert();
 // remove
 bool Remove();
@@ -11,8 +20,10 @@ bool Remove();
 void Print();
 // find
 bool Search();
+};
 
-// array of keys
-// actual data for each key (linked list)                                           
+
+
+                                        
 
 #endif
