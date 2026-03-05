@@ -1,5 +1,4 @@
-#ifndef _HASHINGTABLE_
-#define _HASHINGTABLE_
-
+#ifndef _HASHING_TABLE_H
+#define _HASHING_TABLE_H
 
 #endif
