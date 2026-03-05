@@ -8,7 +8,7 @@ const MAP_SIZE = 7;
 
 class HashingTable
 {
-	Node* data[MAP_SIZE];
+	LL* data[MAP_SIZE]; //7 (MAP_SIZE) LL pointers that we can update to point to the first item in the LL - Caleb
 public:
 	HashingTable();
   	// insert 
