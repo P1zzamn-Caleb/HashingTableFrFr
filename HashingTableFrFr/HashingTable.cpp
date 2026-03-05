@@ -2,6 +2,5 @@
 
 HashingTable::HashingTable()
 {
-	keys = { 0 };
-	//no idea what to do
+	data[MAP_SIZE] = { nullptr };
 }

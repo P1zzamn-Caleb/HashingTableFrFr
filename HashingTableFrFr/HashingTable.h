@@ -8,8 +8,7 @@ const MAP_SIZE = 7;
 
 class HashingTable
 {
-	int keys[MAP_SIZE];
-	LL data[MAP_SIZE];
+	Node* data[MAP_SIZE];
 public:
 	HashingTable();
   	// insert 
