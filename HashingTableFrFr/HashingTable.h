@@ -12,14 +12,14 @@ class HashingTable
 	LL data[MAP_SIZE];
 public:
 	HashingTable();
-  // insert 
-void Insert();
-// remove
-bool Remove();
-// print
-void Print();
-// find
-bool Search();
+  	// insert 
+	void Insert();
+	// remove
+	bool Remove();
+	// print
+	void Print();
+	// find
+	bool Search();
 };
 
 
