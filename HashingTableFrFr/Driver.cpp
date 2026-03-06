@@ -1,5 +1,6 @@
 #include "HashingTable.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 int hashFunction(int key);
@@ -16,12 +17,13 @@ int main()
 // Outgoing: key % MAP_SIZE
 // Return: key % MAP_SIZE
 //********************************************************************************
-int hashFunction(int key)
+int hashFunction(string key)
 {
 	// This should work for now, until we have an insert or a search 
-	// although we may have to static_cast it if the user inputs a string
-	// Also send me an email when we have an insert function or if yall need help 
-	// or if yall have something yall would like me to do
+	// I chose to just use the length of the string as our hash function
+	// Please email me if y'all need any help, or if theres anything more 
+	// I should do
 	// - Caleb
-	return key % MAP_SIZE;
+
+	return ((strlen(key)) % MAP_SIZE);
 }
