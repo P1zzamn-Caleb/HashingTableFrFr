@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-int hashFunction(int key);
+int hashFunction(string key);
 
 int main()
 {
