@@ -1,4 +1,4 @@
-#include "LL.h"
+/*#include "LL.h"
 
 Node::Node() :next(nullptr) {}
 Node::Node(int e) :data(e), next(nullptr) {}
@@ -108,3 +108,4 @@ void LL::Print()const {
         temp = temp->next;
     }
 }
+*/
