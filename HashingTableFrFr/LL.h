@@ -22,10 +22,56 @@ public:
 
 	bool Search(T e)const;
 	void InsertAtFront(T e);
-	//bool Remove(int e);
+	bool Remove(T e);
 	void Print()const;
 };
 
+//********************************************************************************
+// Author: Caleb Ellis
+// Purpose: Removes e
+// Incoming: T e
+// Outgoing: updated LL, true or false based on if it is successful or unsuccessful
+// Return: true or false based on if it is successful or unsuccessful
+//********************************************************************************
+template <class T>
+bool LL<T>::Remove(T e)
+{
+	bool removed = false;
+	if (head == nullptr)
+		cout << "EMPTY" << endl;
+	else if (head->data == e)
+	{
+		Node<T>* temp = head;
+		head = head->next;
+		delete temp;
+		temp = nullptr;
+	}
+	else
+	{
+		Node<T>* curr = head;
+		Node<T>* prev = head;
+		while (curr->next != nullptr && curr->data != e)
+		{
+			prev = curr;
+			curr = curr->next;
+		}
+		if (curr->data == e)
+		{
+			prev->next = curr->next;
+			delete curr;
+			curr = nullptr;
+			removed = true;
+		}
+	}
+	return removed;
+}
+//********************************************************************************
+// Author: Caleb Ellis
+// Purpose: Searches for e
+// Incoming: T e
+// Outgoing: true or false based on if it is found
+// Return: true or false based on if it is found
+//********************************************************************************
 template <class T>
 bool LL<T>::Search(T e)const
 {
@@ -45,12 +91,26 @@ bool LL<T>::Search(T e)const
 	return found;
 }
 
+//********************************************************************************
+// Author: Caleb Ellis
+// Purpose: Inserts at the front of the LL
+// Incoming: T e
+// Outgoing: updated LL
+// Return: none
+//********************************************************************************
 template <class T>
 void LL<T>::InsertAtFront(T e)
 {
 	head = new Node<T>(e, head);
 }
 
+//********************************************************************************
+// Author: Caleb Ellis
+// Purpose: Prints LL
+// Incoming: none
+// Outgoing: none
+// Return: none
+//********************************************************************************
 template <class T>
 void LL<T>::Print()const
 {
