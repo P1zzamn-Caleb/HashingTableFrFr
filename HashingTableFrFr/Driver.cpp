@@ -22,5 +22,9 @@ int main()
 	cout << names.Search(name1) << " " << name1 << endl;
 	cout << names.Search("hi") << " hi" <<  endl;
 
+	cout << names.Remove(name1) << endl;
+	cout << names.Remove("he") << endl;
+	names.Print();
+
 
 }

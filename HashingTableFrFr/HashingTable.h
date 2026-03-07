@@ -13,11 +13,11 @@ class HashingTable
 public:
 	HashingTable();
   	// insert 
-	int hashFunction(T e);
+	int hashFunction(T e)const;
 	//hashing
 	void Insert(T e);
 	// remove
-	//bool Remove();
+	bool Remove(T e);
 	// print
 	void Print()const;
 	// find
@@ -57,6 +57,20 @@ void HashingTable<T>::Print()const
 
 //********************************************************************************
 // Author: Caleb Ellis
+// Purpose: Removes something from the table
+// Incoming: thing to remove
+// Outgoing: 
+// Return: true or false if it is removed
+//********************************************************************************
+template <class T>
+bool HashingTable<T>::Remove(T e)
+{
+	int key = hashFunction(e);
+	return data[key].Remove(e);
+}
+
+//********************************************************************************
+// Author: Caleb Ellis
 // Purpose: Inset data at the hash key
 // Incoming: key as an int and data (e) of type T
 // Outgoing: updated data LL
@@ -84,8 +98,15 @@ bool HashingTable<T>::Search(T e)
 	return data[key].Search(e);
 }
 
+//********************************************************************************
+// Author: Caleb Ellis
+// Purpose: Returns a key by modding an integer by the MAP_SIZE
+// Incoming: e (type T)
+// Outgoing: e % MAP_SIZE
+// Return: e % MAP_SIZE
+//********************************************************************************
 template <class T>
-int HashingTable<T>::hashFunction(T e)
+int HashingTable<T>::hashFunction(T e)const
 {
 	// This should work for now, until we have an insert or a search 
 	// I chose to just use the length of the string as our hash function
