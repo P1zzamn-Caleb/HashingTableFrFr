@@ -35,10 +35,8 @@ bool LL<T>::Search(T e)const
 	else
 	{
 		Node<T>* curr = head;
-		Node<T>* prev = head;
 		while (curr->data != e && curr->next != nullptr)
 		{
-			prev = curr;
 			curr = curr->next;
 		}
 		if (curr->data == e)
@@ -63,7 +61,6 @@ void LL<T>::Print()const
 		cout << temp->data << " ";
 		temp = temp->next;
 	}
-	cout << endl;
 }
 
 #endif

@@ -7,7 +7,10 @@ int hashFunction(string key);
 
 int main()
 {
+	//hashingTable<string> names;
 
+	cout << hashFunction("Liam") << endl;
+	cout << hashFunction("Caleb is very cool and awesome") << endl;
 }
 
 //********************************************************************************
@@ -25,5 +28,5 @@ int hashFunction(string key)
 	// I should do
 	// - Caleb
 
-	return ((strlen(key)) % MAP_SIZE);
+	return ((key.length() % MAP_SIZE));
 }
