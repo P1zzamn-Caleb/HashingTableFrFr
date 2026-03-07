@@ -3,30 +3,24 @@
 #include <string>
 using namespace std;
 
-int hashFunction(string key);
-
 int main()
 {
-	//hashingTable<string> names;
+	HashingTable<string> names;
+	string name1 = "Liam";
+	string name2 = "Caleb is very cool and awesome";
+	string name3 = "Caleb";
+	string name4 = "Hello";
+	string name5 = "Hi";
 
-	cout << hashFunction("Liam") << endl;
-	cout << hashFunction("Caleb is very cool and awesome") << endl;
-}
+	names.Insert(name1);
+	names.Insert(name2);
+	names.Insert(name3);
+	names.Insert(name4);
+	names.Insert(name5);
+	names.Print();
 
-//********************************************************************************
-// Author: Caleb Ellis
-// Purpose: Returns a key by modding an integer by the MAP_SIZE
-// Incoming: key (int)
-// Outgoing: key % MAP_SIZE
-// Return: key % MAP_SIZE
-//********************************************************************************
-int hashFunction(string key)
-{
-	// This should work for now, until we have an insert or a search 
-	// I chose to just use the length of the string as our hash function
-	// Please email me if y'all need any help, or if theres anything more 
-	// I should do
-	// - Caleb
+	cout << names.Search(name1) << " " << name1 << endl;
+	cout << names.Search("hi") << " hi" <<  endl;
 
-	return ((key.length() % MAP_SIZE));
+
 }

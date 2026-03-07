@@ -13,13 +13,15 @@ class HashingTable
 public:
 	HashingTable();
   	// insert 
-	//void Insert();
+	int hashFunction(T e);
+	//hashing
+	void Insert(T e);
 	// remove
 	//bool Remove();
 	// print
 	void Print()const;
 	// find
-	//bool Search();
+	bool Search(T e);
 };
 
 
@@ -53,8 +55,45 @@ void HashingTable<T>::Print()const
 	}
 }
 
+//********************************************************************************
+// Author: Caleb Ellis
+// Purpose: Inset data at the hash key
+// Incoming: key as an int and data (e) of type T
+// Outgoing: updated data LL
+// Return: none
+//********************************************************************************
+template <class T>
+void HashingTable<T>::Insert(T e)
+{
+	int key = hashFunction(e);
+	data[key].InsertAtFront(e);
+}
 
+//********************************************************************************
+// Author: Caleb Ellis
+// Purpose: Search to see if an item exist
+// Incoming: data (e) of type T
+// Outgoing: updated data LL
+// Return: true or false depending on if it is found or not
+//********************************************************************************
+template <class T>
+bool HashingTable<T>::Search(T e)
+{
+	int key = hashFunction(e);
 
-                                        
+	return data[key].Search(e);
+}
+
+template <class T>
+int HashingTable<T>::hashFunction(T e)
+{
+	// This should work for now, until we have an insert or a search 
+	// I chose to just use the length of the string as our hash function
+	// Please email me if y'all need any help, or if theres anything more 
+	// I should do
+	// - Caleb
+
+	return ((e.length() % MAP_SIZE));
+}
 
 #endif
