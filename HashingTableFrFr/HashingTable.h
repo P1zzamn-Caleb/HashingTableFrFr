@@ -18,6 +18,7 @@ public:
 	//bool Remove();
 	// print
 	void Print()const;
+	int hashFunction(T e)const;
 	// find
 	//bool Search();
 };
@@ -53,7 +54,24 @@ void HashingTable<T>::Print()const
 	}
 }
 
+//********************************************************************************
+// Author: Caleb Ellis
+// Purpose: Returns a key by modding an integer by the MAP_SIZE
+// Incoming: e (type T)
+// Outgoing: e % MAP_SIZE
+// Return: e % MAP_SIZE
+//********************************************************************************
+template <class T>
+int HashingTable<T>::hashFunction(T e)const
+{
+	// This should work for now, until we have an insert or a search 
+	// I chose to just use the length of the string as our hash function
+	// Please email me if y'all need any help, or if theres anything more 
+	// I should do
+	// - Caleb
 
+	return ((e.length() % MAP_SIZE));
+}
 
                                         
 
