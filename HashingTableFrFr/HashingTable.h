@@ -11,7 +11,7 @@
 #include <iostream>
 using namespace std;
 
-const int MAP_SIZE = 7; // for tests only, we can remove this and let user decide
+const int MAP_SIZE = 7; // for tests only, we can remove this and let user decide - Tori
 
 
 class HashingTable
@@ -32,9 +32,9 @@ public:
 	// print
 	void Print()const;
 	// find
-	bool Search(int key, int& loc)const;
+	bool Search(const int key, int& loc);
 	// print load factor
-	void loadFactor(string& ratio);
+	void loadFactor();
 
 	// BIG 3
 	// deconstructor

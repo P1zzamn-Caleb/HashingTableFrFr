@@ -7,49 +7,38 @@
 //*********************************************************************************
 #include "HashingTable.h"
 #include <iostream>
-#include <string>
 using namespace std;
 
+char getMenuInput();
+void performDesiredOp(char inVal, HashingTable& table);
 
-int main()
-{
-	HashingTable raffleNums;
-
-	//cout << raffleNums.hashFunction(76) << endl;
-	//cout << raffleNums.hashFunction(120) << endl;
-
-}
-//char getMenuInput();
-//void performDesiredOp(char inVal, HashingTable<string>* arr);
-/*
 int main()
 {
 	char menuInput = ' ';
-	int inVal = 0;
+	int keyVal = 0;
 
-	cout << "How big do you want your hash table?" << endl;
-	cin >> size;
+	/*cout << "How big do you want your hash table?" << endl;
+	cin >> size;	should be updated to do this later */
+	HashingTable nums;
 
-	HashingTable<string> names;
 
 	while (menuInput != 'Q')
 	{
 		menuInput = getMenuInput();
-		performDesiredOp(menuInput, arr);
+		performDesiredOp(menuInput, nums);
 	}
 
 	return 0;
 }
 
-/*
-// Author: Caleb Ellis
+//********************************************************************************
+// Author: Caleb Ellis, Tori Dean (adjusted for this project)
 // Name: getMenuInput()
 // Purpose: Gets input from the menu
 // Incoming: none
 // Outgoing: input char
 // Return: char input
-*/ /*
-
+//********************************************************************************
 char getMenuInput()
 {
 	char input;
@@ -66,6 +55,48 @@ char getMenuInput()
 	cin >> input;
 	input = toupper(input);
 	return input;
-} */
+}
+
+/*
+// Author: Caleb Ellis, Tori Dean (adjusted for this project)
+// Name: performDesiredOp
+// Purpose: Performs the user’s desired operation
+// Incoming: input (char) and table (ref HashingTable)
+// Outgoing: none
+// Return: none
+*/
+void performDesiredOp(char input, HashingTable& table)
+{
+	int inVal = 0, loc = 0;
+
+	switch (input)
+	{
+	case '+':
+		cin >> inVal;
+		table.Insert(inVal);
+		break;
+	case '-':
+		cin >> inVal;
+		table.Remove(inVal);
+		break;
+	case '?':
+		cin >> inVal;
+		if (table.Search(inVal, loc) )
+			cout << loc << endl;
+		break;
+	case 'P':
+		table.Print();
+		cout << endl;
+		break;
+	case 'L':
+		table.loadFactor();
+		cout << endl;
+		break;
+	case 'Q':
+		break;
+	default:
+		cout << "INVALID INPUT! TRY AGAIN!" << endl;
+	}
+}
 
 

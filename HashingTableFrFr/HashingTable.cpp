@@ -8,6 +8,20 @@
 //*********************************************************************************
 #include "HashingTable.h";
 
+//********************************************************************************
+// Author: Caleb Ellis
+// Name: hashFunction
+// Purpose: Returns a hash value by modding an integer by the MAP_SIZE
+// Incoming: key (int)
+// Outgoing: key % MAP_SIZE (int - hash value)
+// Return: key % MAP_SIZE (int - hash value)
+//********************************************************************************
+int HashingTable::hashFunction(int key)
+{
+	return (key % MAP_SIZE);
+}
+// should update for user's input size - Tori
+
 //*********************************************************************************
 // Author: Caleb Ellis, Tori Dean (edited)
 // HashingTable
@@ -28,14 +42,15 @@ HashingTable::HashingTable():capacity(MAP_SIZE), count(0), table(nullptr), empty
 	}
 }
 // we can rewrite this function to take an int parameter for the user's size of choice
+// - Tori
 
 //********************************************************************************
-// Author: Tori Dean
+// Author: Chloe Byrd, Tori Dean (edited)
 // Name: Insert
-// Purpose: Adds a key to the hash table. COmputes the hash index and uses linear
+// Purpose: Adds a key to the hash table. Computes the hash index and uses linear
 // probing to find an empty slot if a collision occurs.
 // Incoming: key (int) - the value to insert
-// Outgoing: Updates the hash table and the corresponding empty flags array
+// Outgoing: Updates the hash table (+) and the corresponding empty flags array (F)
 // Return: bool - true if it is inserted successfully, false if table is full
 //********************************************************************************
 bool HashingTable::Insert(int key) {
@@ -48,27 +63,58 @@ bool HashingTable::Insert(int key) {
 			count++;
 			return true;
 		}
-		return false;
 	}
+	return false;
 
+} // could be rewritten to account for "deleted" slots (marked by -1) - Tori
+
+//********************************************************************************
+// Author: Chloe Byrd, Tori Dean (edited)
+// Name: Remove
+// Purpose: Removes a key from the hashing table
+// Incoming: key (int) - the value to remove
+// Outgoing: Updates the hash table (-) and the corresponding empty flags array (T)
+// Return: bool - true if it is removed successfully, false if not found
+//********************************************************************************
+bool HashingTable::Remove(int key) {
+	int hVal = HashingTable::hashFunction(key);
+	for (int i = 0; i < capacity; i++) {
+		int nextVal = (hVal + i) % capacity;
+		if (empty[nextVal] && table[nextVal] == 0)
+			return false; // slot not used, key is not here
+		if (table[nextVal]==key) {
+			table[nextVal] = -1;
+			empty[nextVal] = true;
+			count--;
+			return true;
+		}
+	}
+	return false; // key not found after checking whole table
 }
 
 //********************************************************************************
-// Author: Caleb Ellis
-// Name: hashFunction
-// Purpose: Returns a hash value by modding an integer by the MAP_SIZE
-// Incoming: key (int)
-// Outgoing: key % MAP_SIZE (int - hash value)
-// Return: key % MAP_SIZE (int - hash value)
+// Author: Chloe Byrd, Tori Dean (edited)
+// Name: Search
+// Purpose: Searches for an key in the hashing table
+// Incoming: key (int) - the value to be searched for
+// Outgoing: loc (int) - the location of the key
+// Return: bool - true if found, false if not found
 //********************************************************************************
-int HashingTable::hashFunction(int key)
-{
-	return (key % MAP_SIZE);
+bool HashingTable::Search(int key, int& loc) {
+	int hVal = HashingTable::hashFunction(key);
+	for (int i = 0; i < capacity; i++) {
+		int nextVal = (hVal + i) % capacity;
+		if (table[nextVal] == key) {
+			loc = nextVal;
+			return true;
+		}
+		else if (table[nextVal] == 0) 
+			return false; // slot not used, key is not here
+	}
+	return false; // key not found after checking whole table
 }
-// should update for user's input size
-
 //********************************************************************************
-// Author: Caleb Ellis
+// Author: Caleb Ellis, Tori Dean (edited)
 // Name: Print
 // Purpose: Print data with there keys
 // Incoming: nothing
@@ -95,8 +141,8 @@ void HashingTable::Print()const
 // Outgoing: Ratio of filled buckets to total buckets
 // Return: None
 //********************************************************************************
-void HashingTable::loadFactor(string& ratio) {
-	ratio = count + ":" + capacity;
+void HashingTable::loadFactor() {
+	cout << count << ":" << capacity; // this may supposed to be a double? - Tori
 }
 
 //********************************************************************************
