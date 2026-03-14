@@ -8,15 +8,17 @@
 //*********************************************************************************
 #include "HashingTable.h";
 
-//********************************************************************************
+//*********************************************************************************
 // Author: Caleb Ellis, Tori Dean (edited)
-// Purpose: HashingTable (constructor)
+// HashingTable
+// Purpose: Initializes the hash table, allocates memory for its arrays, and marks
+// all slots as empty.
 // Incoming: none (as of right now)
 // Outgoing: Allocates memory for the Hashing table and a corresponding bool array
 // for whether that location is empty of full.
 // Return: none
 //********************************************************************************
-HashingTable::HashingTable() :capacity(MAP_SIZE), count(0), table(nullptr), empty(nullptr)
+HashingTable::HashingTable():capacity(MAP_SIZE), count(0), table(nullptr), empty(nullptr)
 {
 	table = new int[capacity];
 	empty = new bool[capacity];
@@ -25,22 +27,49 @@ HashingTable::HashingTable() :capacity(MAP_SIZE), count(0), table(nullptr), empt
 		empty[i] = true;
 	}
 }
-// we can rewrite this function to take an int parameter for the user's size of choice 
+// we can rewrite this function to take an int parameter for the user's size of choice
+
+//********************************************************************************
+// Author: Tori Dean
+// Name: Insert
+// Purpose: Adds a key to the hash table. COmputes the hash index and uses linear
+// probing to find an empty slot if a collision occurs.
+// Incoming: key (int) - the value to insert
+// Outgoing: Updates the hash table and the corresponding empty flags array
+// Return: bool - true if it is inserted successfully, false if table is full
+//********************************************************************************
+bool HashingTable::Insert(int key) {
+	int hVal = HashingTable::hashFunction(key);
+	for (int i = 0; i < capacity; i++) {
+		int nextVal = (hVal+i) % capacity;
+		if (empty[nextVal]) {
+			table[nextVal] = key;
+			empty[nextVal] = false;
+			count++;
+			return true;
+		}
+		return false;
+	}
+
+}
 
 //********************************************************************************
 // Author: Caleb Ellis
-// Purpose: Returns a key by modding an integer by the MAP_SIZE
-// Incoming: e (type T)
-// Outgoing: e % MAP_SIZE
-// Return: e % MAP_SIZE
+// Name: hashFunction
+// Purpose: Returns a hash value by modding an integer by the MAP_SIZE
+// Incoming: key (int)
+// Outgoing: key % MAP_SIZE (int - hash value)
+// Return: key % MAP_SIZE (int - hash value)
 //********************************************************************************
 int HashingTable::hashFunction(int key)
 {
 	return (key % MAP_SIZE);
 }
+// should update for user's input size
 
 //********************************************************************************
 // Author: Caleb Ellis
+// Name: Print
 // Purpose: Print data with there keys
 // Incoming: nothing
 // Outgoing: the data along with their keys

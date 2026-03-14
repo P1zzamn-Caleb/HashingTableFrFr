@@ -26,13 +26,13 @@ public:
 	// constructor
 	HashingTable();
   	// insert 
-	//void Insert(int key);
+	bool Insert(int key);
 	// remove
-	//bool Remove(int key);
+	bool Remove(int key);
 	// print
 	void Print()const;
 	// find
-	//bool Search(int key, int& loc)const;
+	bool Search(int key, int& loc)const;
 	// print load factor
 	void loadFactor(string& ratio);
 
