@@ -21,15 +21,9 @@
     <ClCompile Include="HashingTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LL.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HashingTable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
