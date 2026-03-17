@@ -39,7 +39,7 @@ bool LL<T>::Remove(T e)
 {
 	bool removed = false;
 	if (head == nullptr)
-		cout << "EMPTY" << endl;
+	{}
 	else if (head->data == e)
 	{
 		Node<T>* temp = head;
@@ -78,9 +78,7 @@ template <class T>
 bool LL<T>::Search(T e)const
 {
 	bool found = false;
-	if (head == nullptr)
-		cout << "EMPTY" << endl;
-	else
+	if (head != nullptr)
 	{
 		Node<T>* curr = head;
 		while (curr->data != e && curr->next != nullptr)

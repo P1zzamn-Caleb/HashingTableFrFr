@@ -78,12 +78,13 @@ void performDesiredOp(char input, HashingTable<int>& table)
 		break;
 	case '-':
 		cin >> inVal;
-		table.Remove(inVal);
+		if(!table.Remove(inVal))
+			cout << inVal << " was not found." << endl;
 		break;
 	case '?':
 		cin >> inVal;
 		if (table.Search(inVal, location))
-			cout << location << endl;
+			cout << inVal << " located in " << location << endl;
 		break;
 	case 'P':
 		table.Print();

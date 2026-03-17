@@ -56,7 +56,7 @@ void HashingTable<T>::Insert(T e)
 }
 
 //********************************************************************************
-// Author: Chloe Byrd
+// Author: Chloe Byrd, Caleb (added if statement)
 // Purpose: Removes an element from the hashing table
 // Incoming: e (type T)
 // Outgoing: Element removed from linked list if found
@@ -66,7 +66,8 @@ template <class T>
 bool HashingTable<T>::Remove(T e)
 {
 	int key = hashFunction(e);
-	count--;
+	if(count >0 && data[key].Search(e))
+		count--;
 	return data[key].Remove(e);
 }
 
@@ -122,7 +123,7 @@ int HashingTable<T>::hashFunction(T e)const
 }
 
 //********************************************************************************
-// Author: Tori Dean
+// Author: Tori Dean, Caleb Ellis
 // Name: loadFactor
 // Purpose: Prints the ratio of buckets with data to total buckets
 // Incoming: None
@@ -131,9 +132,7 @@ int HashingTable<T>::hashFunction(T e)const
 //********************************************************************************
 template<class T>
 void HashingTable<T>::loadFactor()const {
-	cout << count << ":" << MAP_SIZE;
-	// this may supposed to be a double?
-	// - Tori
+	cout << count << " pieces of data in " << MAP_SIZE << " buckets.";
 }
 
                                         
