@@ -1,3 +1,10 @@
+//*************************************************************************************
+// Authors: Caleb Ellis, Tori Dean, Chloe Byrd, Jay Goodroe
+// Start Date: February 27. 2026
+// Name: CS 355 DynArr Group Assignment LL
+// Description: This file contains the LL that will implement chain linking into a
+//				hashing table.
+//*************************************************************************************
 #ifndef _LL_H
 #define _LL_H
 #include <iostream>
