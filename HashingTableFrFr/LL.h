@@ -28,6 +28,7 @@ public:
 
 //********************************************************************************
 // Author: Caleb Ellis
+// Name: Remove
 // Purpose: Removes e
 // Incoming: T e
 // Outgoing: updated LL, true or false based on if it is successful or unsuccessful
@@ -67,6 +68,7 @@ bool LL<T>::Remove(T e)
 }
 //********************************************************************************
 // Author: Caleb Ellis
+// Name: Search
 // Purpose: Searches for e
 // Incoming: T e
 // Outgoing: true or false based on if it is found
@@ -93,6 +95,7 @@ bool LL<T>::Search(T e)const
 
 //********************************************************************************
 // Author: Caleb Ellis
+// Name: InsertAtFront
 // Purpose: Inserts at the front of the LL
 // Incoming: T e
 // Outgoing: updated LL
