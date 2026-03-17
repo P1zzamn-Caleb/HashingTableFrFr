@@ -73,7 +73,8 @@ void performDesiredOp(char input, HashingTable& table)
 	{
 	case '+':
 		cin >> inVal;
-		table.Insert(inVal);
+		if(!table.Insert(inVal))
+			cout << "TABLE IS FULL!" <<endl;
 		break;
 	case '-':
 		cin >> inVal;
@@ -82,7 +83,7 @@ void performDesiredOp(char input, HashingTable& table)
 	case '?':
 		cin >> inVal;
 		if (table.Search(inVal, location) )
-			cout << location << endl;
+			cout << inVal << " located in bucket " << location << endl;
 		break;
 	case 'P':
 		table.Print();

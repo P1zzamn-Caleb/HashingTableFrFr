@@ -142,7 +142,7 @@ void HashingTable::Print()const
 // Return: None
 //********************************************************************************
 void HashingTable::loadFactor()const {
-	cout << count << ":" << capacity; // this may supposed to be a double? - Tori
+	cout << count << " out of " << capacity << " buckets full."; // this may supposed to be a double? - Tori
 }
 
 //********************************************************************************
