@@ -1,7 +1,7 @@
 //*************************************************************************************
 // Authors: Caleb Ellis, Tori Dean, Chloe Byrd, Jay Goodroe
-// Start Date: February 27. 2026
-// Name: CS 355 DynArr Group Assignment HashingTable.h
+// Start Date: March 5. 2026
+// Name: CS 355 Hashingtable Group Assignment HashingTable.h
 // Description: This file contains the hashing table for the LL implementation
 //*************************************************************************************
 #ifndef _HASHING_TABLE_H
