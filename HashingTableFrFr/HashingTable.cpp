@@ -16,7 +16,7 @@
 // Outgoing: key % MAP_SIZE (int - hash value)
 // Return: key % MAP_SIZE (int - hash value)
 //********************************************************************************
-int HashingTable::hashFunction(int key)
+int HashingTable::hashFunction(int key)const
 {
 	return (key % MAP_SIZE);
 }
@@ -141,7 +141,7 @@ void HashingTable::Print()const
 // Outgoing: Ratio of filled buckets to total buckets
 // Return: None
 //********************************************************************************
-void HashingTable::loadFactor() {
+void HashingTable::loadFactor()const {
 	cout << count << ":" << capacity; // this may supposed to be a double? - Tori
 }
 

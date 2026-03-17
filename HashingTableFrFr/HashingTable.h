@@ -21,7 +21,7 @@ class HashingTable
 	int* table;
 	bool* empty; // this is to help us keep track of which buckets have data stored in them - Tori
 	
-	int hashFunction(int key);
+	int hashFunction(int key)const;
 public:
 	// constructor
 	HashingTable();
@@ -34,7 +34,7 @@ public:
 	// find
 	bool Search(const int key, int& loc);
 	// print load factor
-	void loadFactor();
+	void loadFactor()const;
 
 	// BIG 3
 	// deconstructor

@@ -67,7 +67,7 @@ char getMenuInput()
 */
 void performDesiredOp(char input, HashingTable& table)
 {
-	int inVal = 0, loc = 0;
+	int inVal = 0, location = 0;
 
 	switch (input)
 	{
@@ -81,8 +81,8 @@ void performDesiredOp(char input, HashingTable& table)
 		break;
 	case '?':
 		cin >> inVal;
-		if (table.Search(inVal, loc) )
-			cout << loc << endl;
+		if (table.Search(inVal, location) )
+			cout << location << endl;
 		break;
 	case 'P':
 		table.Print();
