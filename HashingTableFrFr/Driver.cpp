@@ -1,7 +1,7 @@
 //*********************************************************************************
 // Authors: Caleb Ellis, Tori Dean, Chloe Byrd, Jay Goodroe
-// Start Date: February 27. 2026
-// Name: CS 355 DynArr Group Assignment
+// Start Date: March 5. 2026
+// Name: CS 355 HashingTable Group Assignment
 // Description: This file contains the main driver program that interacts with
 // the user and performs operations on HashingTable class.
 //*********************************************************************************
@@ -61,7 +61,7 @@ char getMenuInput()
 /*
 // Author: Caleb Ellis, Tori Dean (adjusted for this project)
 // Name: performDesiredOp
-// Purpose: Performs the user’s desired operation
+// Purpose: Performs the userâ€™s desired operation
 // Incoming: input (char) and table (ref HashingTable)
 // Outgoing: none
 // Return: none
