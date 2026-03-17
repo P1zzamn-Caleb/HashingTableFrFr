@@ -2,7 +2,7 @@
 #define _HASHING_TABLE_H
 
 // constructor
-#include "LL.h"
+#include "BST.h"
 
 const int MAP_SIZE = 7;
 
@@ -10,7 +10,7 @@ template <class T>
 class HashingTable
 {
 	int count;
-	LL<T> data[MAP_SIZE]; //7 (MAP_SIZE) LL pointers that we can update to point to the first item in the LL - Caleb
+	BST<T> data[MAP_SIZE]; //7 (MAP_SIZE) LL pointers that we can update to point to the first item in the LL - Caleb
 public:
 	HashingTable();
   	// insert 

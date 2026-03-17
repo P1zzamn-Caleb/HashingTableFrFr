@@ -23,7 +23,7 @@
     <ClInclude Include="HashingTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LL.h">
+    <ClInclude Include="BST.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

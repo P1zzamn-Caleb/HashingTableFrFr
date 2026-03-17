@@ -1,7 +1,7 @@
 //*********************************************************************************
 // Authors: Caleb Ellis, Tori Dean, Chloe Byrd, Jay Goodroe
-// Start Date: February 27. 2026
-// Name: CS 355 DynArr Group Assignment
+// Start Date: March 5. 2026
+// Name: CS 355 HashingTable Group Assignment
 // Description: This file contains the main driver program that interacts with
 // the user and performs operations on HashingTable class.
 //*********************************************************************************
@@ -78,12 +78,13 @@ void performDesiredOp(char input, HashingTable<int>& table)
 		break;
 	case '-':
 		cin >> inVal;
-		table.Remove(inVal);
+		if (!table.Remove(inVal))
+			cout << inVal << " was not found." << endl;
 		break;
 	case '?':
 		cin >> inVal;
 		if (table.Search(inVal, location))
-			cout << location << endl;
+			cout << inVal << " located in " << location << endl;
 		break;
 	case 'P':
 		table.Print();
@@ -99,4 +100,3 @@ void performDesiredOp(char input, HashingTable<int>& table)
 		cout << "INVALID INPUT! TRY AGAIN!" << endl;
 	}
 }
-
