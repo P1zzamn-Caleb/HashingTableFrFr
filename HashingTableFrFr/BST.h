@@ -18,16 +18,19 @@ class BST {
     BNode<T>* root;
     void InsertHelper(T e, BNode<T>*& subroot);
     void PrintInHelper(BNode<T>* subroot)const;
+    bool RemoveHelper(T e, BNode<T>*& subroot);
+    void Remover(BNode<T>*& subroot);
 public:
     BST();
     void Insert(T e);
+    bool Remove(T e);
     void PrintIn()const;
     /*void PrintPre()const;
     void PrintPost()const;
     void PrintPreHelper(BNode<T>* subroot)const;
     void PrintPostHelper(BNode<T>* subroot)const;*/
     BNode<T>* SearchHelper(T e, BNode<T>* subroot)const;
-    BNode<T>* Search(T e /*BNode<T>* subroot*/);
+    BNode<T>* Search(T e /*BNode<T>* subroot*/)const;
     T Count()const;
     T CountHelper(BNode<T>* subroot)const;
     void CountHelper(BNode<T>* subroot, T c)const;
@@ -126,7 +129,7 @@ BNode<T>* BST<T>::SearchHelper(T e, BNode<T>* subroot)const {
 }
 
 template <class T>
-BNode<T>* BST<T>::Search(T e /*BNode<T>* subroot*/) {
+BNode<T>* BST<T>::Search(T e /*BNode<T>* subroot*/)const {
     return SearchHelper(e, root);
 }
 
@@ -152,6 +155,51 @@ void BST<T>::CountHelper(BNode<T>* subroot, T c)const {
         c++;
         c += CountHelper(subroot->left);
         c += CountHelper(subroot->right);
+    }
+}
+
+template <class T>
+bool BST<T>::Remove(T e)
+{
+    return RemoveHelper(e, root);
+}
+
+template <class T>
+bool BST<T>::RemoveHelper(T e, BNode<T>*& subroot)
+{
+    bool retval = false;
+    if (subroot != nullptr) {
+        if (subroot->data == e) {
+            Remover(subroot);
+            retval = true;
+        }
+        else if (e < subroot->data) {
+            retval = RemoveHelper(e, subroot->left);
+        }
+        else { // e > subroot->data
+            retval = RemoveHelper(e, subroot->right);
+        }
+    }
+    return retval;
+}
+
+template <class T>
+void BST<T>::Remover(BNode<T>*& subroot)
+{
+    if (subroot->left != nullptr)
+    {
+        subroot->data = subroot->left->data;
+        Remover(subroot->left);
+    }
+    else if (subroot->right != nullptr)
+    {
+        subroot->data = subroot->right->data;
+        Remover(subroot->right);
+    }
+    else
+    {
+        delete subroot;
+        subroot = nullptr;
     }
 }
 
