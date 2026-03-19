@@ -67,7 +67,7 @@ bool HashingTable<T>::Remove(T e)
 {
 	int key = hashFunction(e);
 	count--;
-	//return data[key].Remove(e);
+	return data[key].Remove(e);
 	return false;
 }
 
