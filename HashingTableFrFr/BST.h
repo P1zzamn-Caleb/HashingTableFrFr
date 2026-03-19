@@ -25,17 +25,11 @@ public:
     void Insert(T e);
     bool Remove(T e);
     void PrintIn()const;
-    /*void PrintPre()const;
-    void PrintPost()const;
-    void PrintPreHelper(BNode<T>* subroot)const;
-    void PrintPostHelper(BNode<T>* subroot)const;*/
     BNode<T>* SearchHelper(T e, BNode<T>* subroot)const;
-    BNode<T>* Search(T e /*BNode<T>* subroot*/)const;
+    BNode<T>* Search(T e)const;
     T Count()const;
     T CountHelper(BNode<T>* subroot)const;
     void CountHelper(BNode<T>* subroot, T c)const;
-    //void GetMin(T& min); // go straight left
-    //void GetMax(T& max); // go straight right
 };
 
 //*********************************
@@ -82,34 +76,6 @@ void BST<T>::PrintIn()const {
     PrintInHelper(root);
 }
 
-/*template <class T>
-void BST<T>::PrintPreHelper(BNode<T>* subroot)const {
-    if (subroot != nullptr) {
-        cout << subroot->data << endl;
-        PrintPreHelper(subroot->left);
-        PrintPreHelper(subroot->right);
-    }
-}
-
-template <class T>
-void BST<T>::PrintPre()const {
-    PrintPreHelper(root);
-}
-
-template <class T>
-void BST<T>::PrintPostHelper(BNode<T>* subroot)const {
-    if (subroot != nullptr) {
-        PrintPostHelper(subroot->left);
-        PrintPostHelper(subroot->right);
-        cout << subroot->data << endl;
-    }
-}
-
-template <class T>
-void BST<T>::PrintPost()const {
-    PrintPostHelper(root);
-} */
-
 template <class T>
 BNode<T>* BST<T>::SearchHelper(T e, BNode<T>* subroot)const {
     // this way is better so you can only return one value
@@ -129,7 +95,7 @@ BNode<T>* BST<T>::SearchHelper(T e, BNode<T>* subroot)const {
 }
 
 template <class T>
-BNode<T>* BST<T>::Search(T e /*BNode<T>* subroot*/)const {
+BNode<T>* BST<T>::Search(T e)const {
     return SearchHelper(e, root);
 }
 
