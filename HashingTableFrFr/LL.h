@@ -34,7 +34,7 @@ public:
 };
 
 //********************************************************************************
-// Author: Caleb Ellis
+// Author: Caleb Ellis (Reviewed and Editted by Chloe Byrd)
 // Name: Remove
 // Purpose: Removes e
 // Incoming: T e
