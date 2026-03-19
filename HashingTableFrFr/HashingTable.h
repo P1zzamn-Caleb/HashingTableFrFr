@@ -21,7 +21,7 @@ class HashingTable
 //PRIVATE DATA MEMBERS
 //**************************
 	int count;
-	LL<T> data[MAP_SIZE]; //7 (MAP_SIZE) LL pointers that we can update to point to the first item in the LL - Caleb
+	LL<T> data[MAP_SIZE];
 public:
 //********************************
 // CONSTRUCTOR
@@ -161,7 +161,7 @@ int HashingTable<T>::hashFunction(T e)const
 //********************************************************************************
 template<class T>
 void HashingTable<T>::loadFactor()const {
-	cout << count << " pieces of data in " << MAP_SIZE << " buckets.";
+	cout << count << ":" << MAP_SIZE;
 }
 
                                         
