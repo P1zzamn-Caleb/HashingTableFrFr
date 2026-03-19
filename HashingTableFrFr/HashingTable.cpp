@@ -20,7 +20,6 @@ int HashingTable::hashFunction(int key)const
 {
 	return (key % MAP_SIZE);
 }
-// should update for user's input size - Tori
 
 //*********************************************************************************
 // Author: Caleb Ellis, Tori Dean (edited)
@@ -41,8 +40,6 @@ HashingTable::HashingTable():capacity(MAP_SIZE), count(0), table(nullptr), empty
 		empty[i] = true;
 	}
 }
-// we can rewrite this function to take an int parameter for the user's size of choice
-// - Tori
 
 //********************************************************************************
 // Author: Chloe Byrd, Tori Dean (edited)
@@ -66,7 +63,7 @@ bool HashingTable::Insert(int key) {
 	}
 	return false;
 
-} // could be rewritten to account for "deleted" slots (marked by -1) - Tori
+}
 
 //********************************************************************************
 // Author: Chloe Byrd, Tori Dean (edited)
@@ -113,6 +110,7 @@ bool HashingTable::Search(int key, int& loc) {
 	}
 	return false; // key not found after checking whole table
 }
+
 //********************************************************************************
 // Author: Caleb Ellis, Tori Dean (edited)
 // Name: Print
@@ -142,7 +140,7 @@ void HashingTable::Print()const
 // Return: None
 //********************************************************************************
 void HashingTable::loadFactor()const {
-	cout << count << " out of " << capacity << " buckets full."; // this may supposed to be a double? - Tori
+	cout << count << ":" << capacity; 
 }
 
 //********************************************************************************
