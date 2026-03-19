@@ -4,13 +4,13 @@
 // Name: CS 355 Hashingtable Group Assignment HashingTable.h
 // Purpose: 
 // Description: This file implements a hash table using separate chaining. The table 
-//				stores elements in an array of linked lists (LL<T>), where each index 
+//				stores elements in an array of binary search trees (BST<T>), where each index 
 //				acts as a hash key. Collisions are handled by inserting elements into 
-//				the corresponding linked list.
+//				the corresponding binary search tree.
 //*************************************************************************************
 #ifndef _HASHING_TABLE_H
 #define _HASHING_TABLE_H
-#include "LL.h"
+#include "BST.h"
 
 const int MAP_SIZE = 7;
 
@@ -21,7 +21,7 @@ class HashingTable
 //PRIVATE DATA MEMBERS
 //**************************
 	int count;
-	LL<T> data[MAP_SIZE]; //7 (MAP_SIZE) LL pointers that we can update to point to the first item in the LL - Caleb
+	BST<T> data[MAP_SIZE]; //7 (MAP_SIZE) BST pointers that we can update to point to the first item in the BST - Caleb
 public:
 //********************************
 // CONSTRUCTOR
@@ -69,7 +69,7 @@ template <class T>
 void HashingTable<T>::Insert(T e)
 {
 	int key = hashFunction(e);
-	data[key].InsertAtFront(e);
+	data[key].Insert(e);
 	count++;
 }
 //********************************
@@ -161,7 +161,7 @@ int HashingTable<T>::hashFunction(T e)const
 //********************************************************************************
 template<class T>
 void HashingTable<T>::loadFactor()const {
-	cout << count << " pieces of data in " << MAP_SIZE << " buckets.";
+	cout << count << ":" << MAP_SIZE;
 }
 
                                         
