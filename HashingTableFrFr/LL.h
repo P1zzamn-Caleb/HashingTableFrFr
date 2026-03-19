@@ -53,6 +53,7 @@ bool LL<T>::Remove(T e)
 		head = head->next;
 		delete temp;
 		temp = nullptr;
+		removed = true;
 	}
 	else
 	{
