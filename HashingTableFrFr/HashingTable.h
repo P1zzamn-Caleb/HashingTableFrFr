@@ -51,7 +51,7 @@ template <class T>
 void HashingTable<T>::Insert(T e)
 {
 	int key = hashFunction(e);
-	data[key].InsertAtFront(e);
+	data[key].Insert(e);
 	count++;
 }
 
@@ -67,7 +67,8 @@ bool HashingTable<T>::Remove(T e)
 {
 	int key = hashFunction(e);
 	count--;
-	return data[key].Remove(e);
+	//return data[key].Remove(e);
+	return false;
 }
 
 //********************************************************************************
@@ -102,7 +103,7 @@ void HashingTable<T>::Print()const
 	for (int i = 0;i < MAP_SIZE;i++)
 	{
 		cout << i << ": ";
-		data[i].Print();
+		data[i].PrintIn();
 		cout << endl;
 	}
 }

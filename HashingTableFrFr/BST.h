@@ -17,20 +17,20 @@ template <class T>
 class BST {
     BNode<T>* root;
     void InsertHelper(T e, BNode<T>*& subroot);
-  /*  void PrintInHelper(BNode<T>* subroot)const;*/
+    void PrintInHelper(BNode<T>* subroot)const;
 public:
     BST();
     void Insert(T e);
-   /* void PrintIn()const;
-    void PrintPre()const;
+    void PrintIn()const;
+    /*void PrintPre()const;
     void PrintPost()const;
     void PrintPreHelper(BNode<T>* subroot)const;
     void PrintPostHelper(BNode<T>* subroot)const;*/
-    BNode<T>* searchHelper(T e, BNode<T>* subroot)const;
-    BNode<T>* search(T e, BNode<T>* subroot);
+    BNode<T>* SearchHelper(T e, BNode<T>* subroot)const;
+    BNode<T>* Search(T e /*BNode<T>* subroot*/);
     T Count()const;
-    T CountHelper(BNode* subroot)const;
-    void CountHelper(BNode* subroot, T c)const;
+    T CountHelper(BNode<T>* subroot)const;
+    void CountHelper(BNode<T>* subroot, T c)const;
     //void GetMin(T& min); // go straight left
     //void GetMax(T& max); // go straight right
 };
@@ -51,7 +51,7 @@ BST<T>::BST() :root(nullptr) {}
 template <class T>
 void BST<T>::InsertHelper(T e, BNode<T>*& subroot) {
     if (subroot == nullptr)
-        subroot = new BNode(e);
+        subroot = new BNode<T>(e);
     else if (e == subroot->data)
         cout << "NO DUPES" << endl;
     else if (e < subroot->data)
@@ -69,7 +69,7 @@ template <class T>
 void BST<T>::PrintInHelper(BNode<T>* subroot)const {
     if (subroot != nullptr) {
         PrintInHelper(subroot->left);
-        cout << subroot->data << endl;
+        cout << subroot->data << " ";
         PrintInHelper(subroot->right);
     }
 }
@@ -79,7 +79,7 @@ void BST<T>::PrintIn()const {
     PrintInHelper(root);
 }
 
-template <class T>
+/*template <class T>
 void BST<T>::PrintPreHelper(BNode<T>* subroot)const {
     if (subroot != nullptr) {
         cout << subroot->data << endl;
@@ -105,29 +105,29 @@ void BST<T>::PrintPostHelper(BNode<T>* subroot)const {
 template <class T>
 void BST<T>::PrintPost()const {
     PrintPostHelper(root);
-}
+} */
 
 template <class T>
-BNode<T>* BST<T>::searchHelper(T e, BNode<T>* subroot)const {
+BNode<T>* BST<T>::SearchHelper(T e, BNode<T>* subroot)const {
     // this way is better so you can only return one value
-    BNode* retval = nullptr;
+    BNode<T>* retval = nullptr;
     if (subroot != nullptr) {
         if (subroot->data == e) {
             retval = subroot;
         }
         else if (e < subroot->data) {
-            retval = searchHelper(e, subroot->left);
+            retval = SearchHelper(e, subroot->left);
         }
         else { // e > subroot->data
-            retval = searchHelper(e, subroot->right);
+            retval = SearchHelper(e, subroot->right);
         }
     }
     return retval;
 }
 
 template <class T>
-BNode<T>* BST<T>::search(T e, BNode<T>* subroot) {
-    return searchHelper(e, subroot);
+BNode<T>* BST<T>::Search(T e /*BNode<T>* subroot*/) {
+    return SearchHelper(e, root);
 }
 
 template <class T>
