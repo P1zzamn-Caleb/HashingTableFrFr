@@ -86,7 +86,7 @@ template <class T>
 bool HashingTable<T>::Remove(T e)
 {
 	int key = hashFunction(e);
-	if(count >0 && data[key].Search(e))
+	if(count > 0 && data[key].Search(e))
 		count--;
 	return data[key].Remove(e);
 }
@@ -128,7 +128,7 @@ void HashingTable<T>::Print()const
 	for (int i = 0;i < MAP_SIZE;i++)
 	{
 		cout << i << ": ";
-		data[i].Print();
+		data[i].PrintIn();
 		cout << endl;
 	}
 }
