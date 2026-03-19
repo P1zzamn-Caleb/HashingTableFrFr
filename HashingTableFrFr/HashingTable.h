@@ -2,12 +2,14 @@
 // Authors: Caleb Ellis, Tori Dean, Chloe Byrd, Jay Goodroe
 // Start Date: March 5. 2026
 // Name: CS 355 Hashingtable Group Assignment HashingTable.h
-// Description: This file contains the hashing table for the LL implementation
+// Purpose: 
+// Description: This file implements a hash table using separate chaining. The table 
+//				stores elements in an array of linked lists (LL<T>), where each index 
+//				acts as a hash key. Collisions are handled by inserting elements into 
+//				the corresponding linked list.
 //*************************************************************************************
 #ifndef _HASHING_TABLE_H
 #define _HASHING_TABLE_H
-
-// constructor
 #include "LL.h"
 
 const int MAP_SIZE = 7;
@@ -15,9 +17,15 @@ const int MAP_SIZE = 7;
 template <class T>
 class HashingTable
 {
+//**************************
+//PRIVATE DATA MEMBERS
+//**************************
 	int count;
 	LL<T> data[MAP_SIZE]; //7 (MAP_SIZE) LL pointers that we can update to point to the first item in the LL - Caleb
 public:
+//********************************
+// CONSTRUCTOR
+//********************************
 	HashingTable();
   	// insert 
 	void Insert(T e);
@@ -33,7 +41,9 @@ public:
 	void loadFactor()const;
 };
 
-
+//********************************
+// CONSTRUCTOR
+//********************************
 //********************************************************************************
 // Author: Caleb Ellis
 // Purpose: Constructor
@@ -45,7 +55,9 @@ template <class T>
 HashingTable<T>::HashingTable() : count(0)
 {
 }
-
+//********************************
+//INSERT FUNCTION
+//********************************
 //********************************************************************************
 // Author: Chloe Byrd
 // Purpose: Inserts an element into the hashing table
@@ -60,7 +72,9 @@ void HashingTable<T>::Insert(T e)
 	data[key].InsertAtFront(e);
 	count++;
 }
-
+//********************************
+// REMOVE FUNCTION
+//********************************
 //********************************************************************************
 // Author: Chloe Byrd, Caleb (added if statement)
 // Purpose: Removes an element from the hashing table
@@ -76,7 +90,9 @@ bool HashingTable<T>::Remove(T e)
 		count--;
 	return data[key].Remove(e);
 }
-
+//********************************
+// SEARCH FUNCTION
+//********************************
 //********************************************************************************
 // Author: Chloe Byrd, Tori Dean (edited)
 // Purpose: Searches for an element in the hashing table
@@ -96,6 +112,9 @@ bool HashingTable<T>::Search(T e, int &loc)
 	return false;
 }
 
+//********************************
+// PRINT FUNCTION
+//********************************
 //********************************************************************************
 // Author: Caleb Ellis
 // Purpose: Print data with there keys
@@ -113,7 +132,9 @@ void HashingTable<T>::Print()const
 		cout << endl;
 	}
 }
-
+//********************************
+// HASH FUNCTION
+//********************************
 //********************************************************************************
 // Author: Caleb Ellis
 // Purpose: Returns a key by modding an integer by the MAP_SIZE
@@ -127,7 +148,9 @@ int HashingTable<T>::hashFunction(T e)const
 
 	return (e % MAP_SIZE);
 }
-
+//********************************
+// LOAD FACTOR FUNCTION
+//********************************
 //********************************************************************************
 // Author: Tori Dean, Caleb Ellis
 // Name: loadFactor
