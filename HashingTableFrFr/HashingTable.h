@@ -1,17 +1,31 @@
+//*************************************************************************************
+// Authors: Caleb Ellis, Tori Dean, Chloe Byrd, Jay Goodroe
+// Start Date: March 5. 2026
+// Name: CS 355 Hashingtable Group Assignment HashingTable.h
+// Purpose: 
+// Description: This file implements a hash table using separate chaining. The table 
+//				stores elements in an array of linked lists (LL<T>), where each index 
+//				acts as a hash key. Collisions are handled by inserting elements into 
+//				the corresponding linked list.
+//*************************************************************************************
 #ifndef _HASHING_TABLE_H
 #define _HASHING_TABLE_H
-
-// constructor
-#include "BST.h"
+#include "LL.h"
 
 const int MAP_SIZE = 7;
 
 template <class T>
 class HashingTable
 {
+//**************************
+//PRIVATE DATA MEMBERS
+//**************************
 	int count;
-	BST<T> data[MAP_SIZE]; //7 (MAP_SIZE) LL pointers that we can update to point to the first item in the LL - Caleb
+	LL<T> data[MAP_SIZE]; //7 (MAP_SIZE) LL pointers that we can update to point to the first item in the LL - Caleb
 public:
+//********************************
+// CONSTRUCTOR
+//********************************
 	HashingTable();
   	// insert 
 	void Insert(T e);
@@ -27,7 +41,9 @@ public:
 	void loadFactor()const;
 };
 
-
+//********************************
+// CONSTRUCTOR
+//********************************
 //********************************************************************************
 // Author: Caleb Ellis
 // Purpose: Constructor
@@ -39,7 +55,9 @@ template <class T>
 HashingTable<T>::HashingTable() : count(0)
 {
 }
-
+//********************************
+//INSERT FUNCTION
+//********************************
 //********************************************************************************
 // Author: Chloe Byrd
 // Purpose: Inserts an element into the hashing table
@@ -51,12 +69,14 @@ template <class T>
 void HashingTable<T>::Insert(T e)
 {
 	int key = hashFunction(e);
-	data[key].Insert(e);
+	data[key].InsertAtFront(e);
 	count++;
 }
-
+//********************************
+// REMOVE FUNCTION
+//********************************
 //********************************************************************************
-// Author: Chloe Byrd
+// Author: Chloe Byrd, Caleb (added if statement)
 // Purpose: Removes an element from the hashing table
 // Incoming: e (type T)
 // Outgoing: Element removed from linked list if found
@@ -66,11 +86,13 @@ template <class T>
 bool HashingTable<T>::Remove(T e)
 {
 	int key = hashFunction(e);
-	count--;
+	if(count >0 && data[key].Search(e))
+		count--;
 	return data[key].Remove(e);
-	return false;
 }
-
+//********************************
+// SEARCH FUNCTION
+//********************************
 //********************************************************************************
 // Author: Chloe Byrd, Tori Dean (edited)
 // Purpose: Searches for an element in the hashing table
@@ -90,6 +112,9 @@ bool HashingTable<T>::Search(T e, int &loc)
 	return false;
 }
 
+//********************************
+// PRINT FUNCTION
+//********************************
 //********************************************************************************
 // Author: Caleb Ellis
 // Purpose: Print data with there keys
@@ -103,11 +128,13 @@ void HashingTable<T>::Print()const
 	for (int i = 0;i < MAP_SIZE;i++)
 	{
 		cout << i << ": ";
-		data[i].PrintIn();
+		data[i].Print();
 		cout << endl;
 	}
 }
-
+//********************************
+// HASH FUNCTION
+//********************************
 //********************************************************************************
 // Author: Caleb Ellis
 // Purpose: Returns a key by modding an integer by the MAP_SIZE
@@ -121,9 +148,11 @@ int HashingTable<T>::hashFunction(T e)const
 
 	return (e % MAP_SIZE);
 }
-
+//********************************
+// LOAD FACTOR FUNCTION
+//********************************
 //********************************************************************************
-// Author: Tori Dean
+// Author: Tori Dean, Caleb Ellis
 // Name: loadFactor
 // Purpose: Prints the ratio of buckets with data to total buckets
 // Incoming: None
@@ -132,9 +161,7 @@ int HashingTable<T>::hashFunction(T e)const
 //********************************************************************************
 template<class T>
 void HashingTable<T>::loadFactor()const {
-	cout << count << ":" << MAP_SIZE;
-	// this may supposed to be a double?
-	// - Tori
+	cout << count << " pieces of data in " << MAP_SIZE << " buckets.";
 }
 
                                         
